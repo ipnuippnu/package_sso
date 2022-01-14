@@ -1,0 +1,38 @@
+<?php
+
+namespace IpnuIppnu\Package\Sso\Services;
+
+use IpnuIppnu\Package\Sso\Http\HttpRequest;
+use IpnuIppnu\Package\Sso\Http\HttpRequestInterface;
+use Illuminate\Http\Request;
+
+class Auth implements HttpRequestInterface
+{
+    use HttpRequest;
+
+    private $identifier;
+    protected $encrypt = TRUE;
+
+    public function setId(Request $request)
+    {
+        $this->identifier = $request->cookie( sha1('SSO_SESSION') );
+        return $this;
+    }
+
+    public function uri(): string
+    {
+        return 'auth';
+    }
+
+    public function getCacheName(): string
+    {
+        return sha1('auth_' . $this->identifier);
+    }
+
+    public function headers(): array
+    {
+        return [
+            'request-session' => $this->identifier
+        ];
+    }
+}

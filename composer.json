@@ -1,0 +1,31 @@
+{
+    "name": "ipnuippnu/package_sso",
+    "description": "Package for SSO API EDO",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^7.3|^8.0",
+        "laravel/framework": "^8.75"
+    },
+    "authors": [
+        {
+            "name": "PC IPNU-IPPNU Trenggalek",
+            "email": "info@pelajartrenggalek.or.id"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "IpnuIppnu\\Package\\Sso\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "IpnuIppnu\\Package\\Sso\\Provider"
+            ],
+            "aliases": {
+                "Sso": "IpnuIppnu\\Package\\Sso\\Facades"
+            }
+        }
+    }
+}
