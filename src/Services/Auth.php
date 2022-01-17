@@ -31,7 +31,7 @@ class Auth implements HttpRequestInterface
 
     public function getCacheName(): string
     {
-        return sha1('auth_' . $this->api ?? $this->identifier);
+        return sha1('auth_' . isset($this->api) ? $this->api : $this->identifier);
     }
 
     public function headers(): array
