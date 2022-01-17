@@ -12,7 +12,6 @@ class Auth implements HttpRequestInterface
 
     private $identifier;
     protected $encrypt = TRUE;
-    protected $api;
 
     public function setFromApi($token){
         $this->api = $token;
@@ -37,7 +36,7 @@ class Auth implements HttpRequestInterface
 
     public function headers(): array
     {
-        if( $this->api ) return [
+        if( isset($this->api) ) return [
             'Authorization' => $this->api
         ];
 
