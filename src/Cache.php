@@ -7,7 +7,7 @@ use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Cache as CacheLaravel;
 trait Cache {
 
-    private static $ttl = 5;
+    private static $ttl = 1 * 60;
 
     public function getCache()
     {

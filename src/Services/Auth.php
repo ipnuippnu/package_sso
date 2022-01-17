@@ -12,6 +12,7 @@ class Auth implements HttpRequestInterface
 
     private $identifier;
     protected $encrypt = TRUE;
+    protected $api = false;
 
     public function setFromApi($token){
         $this->api = $token;
@@ -31,12 +32,12 @@ class Auth implements HttpRequestInterface
 
     public function getCacheName(): string
     {
-        return sha1('auth_' . isset($this->api) ? $this->api : $this->identifier);
+        return sha1('auth_' . ($this->api ? $this->api : $this->identifier));
     }
 
     public function headers(): array
     {
-        if( isset($this->api) ) return [
+        if( $this->api ) return [
             'Authorization' => $this->api
         ];
 
