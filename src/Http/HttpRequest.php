@@ -26,7 +26,11 @@ trait HttpRequest
 
         $req = $client->{$this->method ?? 'GET'}($this->uri(), $this->data());
 
-        if( $req->failed() ) return false;
+        if( $req->failed() )
+        {
+            if( in_array($req->getStatusCode(), [403, 422]) ) return null;
+            throw new Exception("Kesalahan Sistem SSO: " . $req->getStatusCode());
+        }
 
         $response = $req->body();
 
