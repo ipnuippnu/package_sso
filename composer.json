@@ -4,8 +4,8 @@
     "type": "library",
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
-        "laravel/framework": "^8.75"
+        "php": "^8.0.2",
+        "laravel/framework": "^9.48"
     },
     "authors": [
         {
