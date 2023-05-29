@@ -4,7 +4,6 @@ namespace IpnuIppnu\Package\Sso;
 
 use IpnuIppnu\Package\Sso\Services\Auth;
 use Closure;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\URL;
@@ -33,7 +32,7 @@ class Middleware
         // Tidak perlu catch, karena
         // jika tidak cocok langsung
         // di redirect ke sso
-        if( $result = app(Auth::class)->setId($request)->execute() )
+        if( $result = app(Auth::class)->execute() )
         {
             $request->credential = $result;
             return $request;
